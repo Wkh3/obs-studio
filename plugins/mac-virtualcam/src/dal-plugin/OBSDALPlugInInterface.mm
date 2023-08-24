@@ -105,7 +105,7 @@ OSStatus HardwarePlugIn_InitializeWithObjectID(CMIOHardwarePlugInRef self, CMIOO
 
     OBSDALStream *stream = [[OBSDALStream alloc] init];
     CMIOObjectID streamId;
-    error = CMIOObjectCreate(OBSDALPlugInRef(), deviceId, kCMIOStreamClassID, &streamId);
+    error = CMIOExtension(OBSDALPlugInRef(), deviceId, kCMIOStreamClassID, &streamId);
     if (error != noErr) {
         DLog(@"CMIOObjectCreate Error %d", error);
         return error;
@@ -116,14 +116,14 @@ OSStatus HardwarePlugIn_InitializeWithObjectID(CMIOHardwarePlugInRef self, CMIOO
     plugIn.stream = stream;
 
     // Tell the system about the Device
-    error = CMIOObjectsPublishedAndDied(OBSDALPlugInRef(), kCMIOObjectSystemObject, 1, &deviceId, 0, 0);
+    error = CMIOExtension(OBSDALPlugInRef(), kCMIOObjectSystemObject, 1, &deviceId, 0, 0);
     if (error != kCMIOHardwareNoError) {
         DLog(@"CMIOObjectsPublishedAndDied plugin/device Error %d", error);
         return error;
     }
 
     // Tell the system about the Stream
-    error = CMIOObjectsPublishedAndDied(OBSDALPlugInRef(), deviceId, 1, &streamId, 0, 0);
+    error = CMIOExtensionCMIOExtensionCMIOExtensionCMIOExtensionCMIOExtension(OBSDALPlugInRef(), deviceId, 1, &streamId, 0, 0);
     if (error != kCMIOHardwareNoError) {
         DLog(@"CMIOObjectsPublishedAndDied device/stream Error %d", error);
         return error;

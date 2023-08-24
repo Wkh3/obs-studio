@@ -22,7 +22,7 @@ if(CMAKE_HOST_SYSTEM_NAME MATCHES "(Darwin)" OR OBS_CMAKE_VERSION VERSION_GREATE
   if(OS_WINDOWS)
     add_subdirectory(libobs-d3d11)
     add_subdirectory(libobs-winrt)
-  endif()
+  endif() 
   add_subdirectory(libobs-opengl)
   add_subdirectory(plugins)
 
@@ -51,7 +51,6 @@ include(DeprecationHelpers)
 include(ObsHelpers)
 # Set default compiler flags
 include(CompilerConfig)
-
 # Allow selection of common build types via UI
 if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE

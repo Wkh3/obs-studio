@@ -5,7 +5,7 @@ include_guard(GLOBAL)
 include(ccache)
 include(compiler_common)
 
-add_compile_options("$<$<NOT:$<COMPILE_LANGUAGE:Swift>>:-fopenmp-simd>")
+set(ARCH_SIMD_FLAGS "$<$<NOT:$<COMPILE_LANGUAGE:Swift>>:-fopenmp-simd>")
 
 # Enable selection between arm64 and x86_64 targets
 if(NOT CMAKE_OSX_ARCHITECTURES)
@@ -72,6 +72,5 @@ else()
         CACHE BOOL "Enable clang time-trace (requires Ninja)" FORCE)
   endif()
 endif()
-
 add_compile_definitions(
   "$<$<NOT:$<COMPILE_LANGUAGE:Swift>>:$<$<CONFIG:DEBUG>:DEBUG>;$<$<CONFIG:DEBUG>:_DEBUG>;SIMDE_ENABLE_OPENMP>")
