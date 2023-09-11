@@ -21,7 +21,7 @@ build-mac-amd64:
       - ./install_dir
 
 
-build-mac-amd64:
+build-mac-arm64:
   stage: build
   tags:
     - mac-arm64
