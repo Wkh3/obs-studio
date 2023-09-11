@@ -1,9 +1,10 @@
 stages:
   - build
 
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
 before_script:
-  - git fetch origin --tags
-  - git submodule update --init --recursive
   - mkdir ./install_dir
 
 build-mac-amd64:
