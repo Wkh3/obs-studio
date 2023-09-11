@@ -1,6 +1,6 @@
 find_qt(COMPONENTS Widgets Network Svg Xml COMPONENTS_LINUX Gui DBus)
 
-target_link_libraries(obs-studio PRIVATE Qt::Widgets Qt::Svg Qt::Xml Qt::Network Qt::DBus)
+target_link_libraries(obs-studio PRIVATE Qt::Widgets Qt::Svg Qt::Xml Qt::Network )
 
 set_target_properties(
   obs-studio
