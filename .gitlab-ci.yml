@@ -2,6 +2,7 @@ stages:
   - build
 
 before_script:
+  - git fetch origin --tags
   - git submodule update --init --recursive
   - mkdir ./install_dir
 
