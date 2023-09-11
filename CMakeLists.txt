@@ -34,7 +34,7 @@ if(CMAKE_HOST_SYSTEM_NAME MATCHES "(Darwin)" OR OBS_CMAKE_VERSION VERSION_GREATE
   return()
 endif()
 
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake/Modules")
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake/Modules" "${CMAKE_CURRENT_LIST_DIR}/cmake/common")
 include(VersionConfig)
 
 # Prohibit in-source builds
@@ -58,6 +58,8 @@ if(NOT CMAKE_BUILD_TYPE)
       CACHE STRING "OBS build type [Release, RelWithDebInfo, Debug, MinSizeRel]" FORCE)
   set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS Release RelWithDebInfo Debug MinSizeRel)
 endif()
+
+include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/windows/buildspec.cmake" NO_POLICY_SCOPE)
 
 # Global project options
 option(ENABLE_HEVC "Enable HEVC encoders" ON)
