@@ -30,6 +30,7 @@
 !COPYING
 !INSTALL
 !README.rst
+!.gitlab-ci.yml
 
 # Exclude lock files
 *.lock.json
