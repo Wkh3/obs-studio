@@ -21,7 +21,7 @@ build-mac-amd64:
       - ./install_dir
 
 
-build-mac-arm64:
+build-windows-amd64:
   stage: build
   tags:
     - windows
