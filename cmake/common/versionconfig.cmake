@@ -10,26 +10,26 @@ set(_obs_version ${_obs_default_version})
 set(_obs_version_canonical ${_obs_default_version})
 
 # Attempt to automatically discover expected OBS version
-# if(NOT DEFINED OBS_VERSION_OVERRIDE AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/.git")
-#   execute_process(
-#     COMMAND git describe --always --tags --dirty=-modified
-#     OUTPUT_VARIABLE _obs_version
-#     WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
-#     RESULT_VARIABLE _obs_version_result
-#     OUTPUT_STRIP_TRAILING_WHITESPACE)
+if(NOT DEFINED OBS_VERSION_OVERRIDE AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/.git")
+  execute_process(
+    COMMAND git describe --always --tags --dirty=-modified
+    OUTPUT_VARIABLE _obs_version
+    WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+    RESULT_VARIABLE _obs_version_result
+    OUTPUT_STRIP_TRAILING_WHITESPACE)
 
-#   if(_obs_version_result EQUAL 0)
-#     string(REGEX REPLACE "([0-9]+)\\.([0-9]+)\\.([0-9]+).*" "\\1;\\2;\\3" _obs_version_canonical ${_obs_version})
-#   endif()
-# elseif(DEFINED OBS_VERSION_OVERRIDE)
-#   if(OBS_VERSION_OVERRIDE MATCHES "([0-9]+)\\.([0-9]+)\\.([0-9]+).*")
-#     string(REGEX REPLACE "([0-9]+)\\.([0-9]+)\\.([0-9]+).*" "\\1;\\2;\\3" _obs_version_canonical
-#                          ${OBS_VERSION_OVERRIDE})
-#     set(_obs_version ${OBS_VERSION_OVERRIDE})
-#   else()
-#     message(FATAL_ERROR "Invalid version supplied - must be <MAJOR>.<MINOR>.<PATCH>[-(rc|beta)<NUMBER>].")
-#   endif()
-# endif()
+  if(_obs_version_result EQUAL 0)
+    string(REGEX REPLACE "([0-9]+)\\.([0-9]+)\\.([0-9]+).*" "\\1;\\2;\\3" _obs_version_canonical ${_obs_version})
+  endif()
+elseif(DEFINED OBS_VERSION_OVERRIDE)
+  if(OBS_VERSION_OVERRIDE MATCHES "([0-9]+)\\.([0-9]+)\\.([0-9]+).*")
+    string(REGEX REPLACE "([0-9]+)\\.([0-9]+)\\.([0-9]+).*" "\\1;\\2;\\3" _obs_version_canonical
+                         ${OBS_VERSION_OVERRIDE})
+    set(_obs_version ${OBS_VERSION_OVERRIDE})
+  else()
+    message(FATAL_ERROR "Invalid version supplied - must be <MAJOR>.<MINOR>.<PATCH>[-(rc|beta)<NUMBER>].")
+  endif()
+endif()
 
 # Set beta/rc versions if suffix included in version string
 if(_obs_version MATCHES "[0-9]+\\.[0-9]+\\.[0-9]+-rc[0-9]+")
