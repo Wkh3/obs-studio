@@ -24,12 +24,12 @@ build-mac-amd64:
 build-mac-arm64:
   stage: build
   tags:
-    - mac-arm64
+    - windows
   script:
-    - cmake -B build -G Xcode -DCMAKE_OSX_DEPLOYMENT_TARGET=12.0  -DCMAKE_OSX_ARCHITECTURES="arm64" -DENABLE_VIRTUALCAM=OFF -DCMAKE_INSTALL_PREFIX="./install_dir"
+    - cmake -B build -G "Visual Studio 17"  -DCMAKE_INSTALL_PREFIX="./install_dir"
     - cmake --build build --config Release
     - cmake --install build
-    - cmake --install build --component Development 
+    - cmake --install build --component obs_libraries 
   artifacts:
     name: obs-dev
     paths:
