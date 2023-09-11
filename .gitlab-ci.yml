@@ -16,6 +16,21 @@ build-mac-amd64:
     - cmake --install build
     - cmake --install build --component Development 
   artifacts:
-    name: libobs 
+    name: obs-dev
+    paths:
+      - ./install_dir
+
+
+build-mac-amd64:
+  stage: build
+  tags:
+    - mac-arm64
+  script:
+    - cmake -B build -G Xcode -DCMAKE_OSX_DEPLOYMENT_TARGET=12.0  -DCMAKE_OSX_ARCHITECTURES="arm64" -DENABLE_VIRTUALCAM=OFF -DCMAKE_INSTALL_PREFIX="./install_dir"
+    - cmake --build build --config Release
+    - cmake --install build
+    - cmake --install build --component Development 
+  artifacts:
+    name: obs-dev
     paths:
       - ./install_dir
