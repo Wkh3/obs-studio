@@ -25,6 +25,9 @@ build-windows-amd64:
   stage: build
   tags:
     - windows
+  before_script:
+    - $env:PATH="${WINRUNNER_CMAKE_DIR}\bin;$env:PATH"
+
   script:
     - cmake -B build -G "Visual Studio 17"  -DCMAKE_INSTALL_PREFIX="./install_dir"
     - cmake --build build --config Release
