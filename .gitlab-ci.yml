@@ -3,18 +3,18 @@ stages:
 
 before_script:
   - git submodule update --init --recursive
-  - mkdir install
+  - mkdir ./install_dir
 
 build-mac-amd64:
   stage: build
   tags:
     - mac-amd64
   script:
-    - cmake -B build -G Xcode -DCMAKE_OSX_DEPLOYMENT_TARGET=12.0  -DCMAKE_OSX_ARCHITECTURES="x86_64" -DENABLE_VIRTUALCAM=OFF -DCMAKE_INSTALL_PREFIX="./install"
+    - cmake -B build -G Xcode -DCMAKE_OSX_DEPLOYMENT_TARGET=12.0  -DCMAKE_OSX_ARCHITECTURES="x86_64" -DENABLE_VIRTUALCAM=OFF -DCMAKE_INSTALL_PREFIX="./install_dir"
     - cmake --build build --config Release
     - cmake --install build
     - cmake --install build --component Development 
   artifacts:
     name: libobs 
     paths:
-      - ./install
+      - ./install_dir
