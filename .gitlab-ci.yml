@@ -17,7 +17,7 @@ build-mac-amd64:
     - cmake --install build
     - cmake --install build --component Development 
   artifacts:
-    name: obs-dev
+    name: libobs-mac-x64
     paths:
       - ./install_dir
 
@@ -31,7 +31,7 @@ build-mac-arm64:
     - cmake --install build
     - cmake --install build --component Development 
   artifacts:
-    name: obs-dev
+    name: libobs-mac-arm64
     paths:
       - ./install_dir
 
@@ -50,6 +50,6 @@ build-windows-amd64:
     - cmake --install build
     - cmake --install build --component obs_libraries 
   artifacts:
-    name: obs-dev
+    name: libobs-win-x64
     paths:
       - ./install_dir
