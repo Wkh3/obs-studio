@@ -752,7 +752,6 @@ static int obs_init_video(struct obs_video_info *ovi)
 		return OBS_VIDEO_FAIL;
 	if (pthread_mutex_init(&video->mixes_mutex, NULL) < 0)
 		return OBS_VIDEO_FAIL;
-
 	if (!obs_view_add2(&obs->data.main_view, ovi))
 		return OBS_VIDEO_FAIL;
 

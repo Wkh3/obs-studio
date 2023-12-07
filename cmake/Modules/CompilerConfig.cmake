@@ -108,7 +108,7 @@ else()
     - https://github.com/obsproject/obs-studio/issues/8850 for 13.1.1
   ]]
   add_compile_options(
-    -Werror
+    # -Werror
     -Wextra
     -Wvla
     -Wswitch
@@ -119,7 +119,7 @@ else()
     -Wno-unused-function
     -Wno-missing-field-initializers
     -fno-strict-aliasing
-    "$<$<COMPILE_LANGUAGE:C>:-Werror-implicit-function-declaration;-Wno-missing-braces>"
+    # "$<$<COMPILE_LANGUAGE:C>:-Werror-implicit-function-declaration;-Wno-missing-braces>"
     "$<$<BOOL:${USE_LIBCXX}>:-stdlib=libc++>"
     "$<$<CONFIG:DEBUG>:-DDEBUG=1;-D_DEBUG=1>"
     "$<$<COMPILE_LANG_AND_ID:CXX,AppleClang,Clang>:-Wnull-conversion;-fcolor-diagnostics;-Wno-error=shorten-64-to-32>"

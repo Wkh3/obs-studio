@@ -23,7 +23,7 @@ set(_obs_clang_common_options
     -Wno-trigraphs
     -Wno-missing-field-initializers
     -Wno-missing-prototypes
-    -Werror=return-type
+    # -Werror=return-type
     -Wunreachable-code
     -Wquoted-include-in-framework-header
     -Wno-missing-braces
@@ -71,7 +71,7 @@ set(_obs_clang_cxx_options
     -Wno-shadow
     -Winvalid-offsetof
     -Wmove
-    -Werror=block-capture-autoreleasing
+    # -Werror=block-capture-autoreleasing
     -Wrange-loop-analysis)
 
 if(CMAKE_CXX_STANDARD GREATER_EQUAL 20)

@@ -1,0 +1,25 @@
+{
+    "prebuild": {
+        "mac": {
+            "x86_64": [{
+                "name": "",
+                "version": "",
+                "url": ""
+            }],
+            "arm64": [{
+                "name": "libwebrtc",
+                "version": "m118",
+                "url": "https://artifacts-1318763260.cos.ap-shanghai.myqcloud.com/libwebrtc-macos-arm64-h264.tar.xz"
+            }]
+        },
+
+        "windows": {
+            "x86_64": {
+
+            }
+        }
+    },
+
+    "source": []
+
+}

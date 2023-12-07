@@ -40,7 +40,7 @@ else()
       -Wundeclared-selector
       -Wdeprecated-implementations
       -Wprotocol
-      -Werror=block-capture-autoreleasing
+      # -Werror=block-capture-autoreleasing
       -Wrange-loop-analysis)
 
   # clang options for ObjC++

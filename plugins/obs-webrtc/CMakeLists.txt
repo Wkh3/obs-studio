@@ -1,6 +1,4 @@
-cmake_minimum_required(VERSION 3.22...3.25)
-
-legacy_check()
+include(CMakePrintHelpers)
 
 option(ENABLE_WEBRTC "Enable WebRTC Output support" ON)
 if(NOT ENABLE_WEBRTC)
@@ -8,15 +6,14 @@ if(NOT ENABLE_WEBRTC)
   return()
 endif()
 
-find_package(LibDataChannel REQUIRED)
-find_package(CURL REQUIRED)
+find_package(libwebrtc REQUIRED)
 
-add_library(obs-webrtc MODULE)
-add_library(OBS::webrtc ALIAS obs-webrtc)
+if(libwebrtc_FOUND)
+    cmake_print_properties(TARGETS "libwebrtc::libwebrtc" PROPERTIES
+        INTERFACE_INCLUDE_DIRECTORIES
+        IMPORTED_LOCATION
+    )
+endif()
 
-target_sources(obs-webrtc PRIVATE obs-webrtc.cpp whip-output.cpp whip-output.h whip-service.cpp whip-service.h
-                                  whip-utils.h)
-
-target_link_libraries(obs-webrtc PRIVATE OBS::libobs LibDataChannel::LibDataChannel CURL::libcurl)
-
-set_target_properties_obs(obs-webrtc PROPERTIES FOLDER plugins PREFIX "")
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+add_subdirectory(output)
