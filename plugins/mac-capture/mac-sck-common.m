@@ -79,6 +79,7 @@ void screen_capture_build_content_list(struct screen_capture *sc, bool display_c
     BOOL onScreenWindowsOnly = (display_capture) ? NO : !sc->show_hidden_windows;
     [SCShareableContent getShareableContentExcludingDesktopWindows:YES onScreenWindowsOnly:onScreenWindowsOnly
                                                  completionHandler:new_content_received];
+    // os_sem_wait(sc->shareable_content_available);
 }
 
 bool build_display_list(struct screen_capture *sc, obs_properties_t *props)
@@ -250,9 +251,9 @@ void screen_stream_video_update(struct screen_capture *sc, CMSampleBufferRef sam
 
     CVImageBufferRef image_buffer = CMSampleBufferGetImageBuffer(sample_buffer);
 
-    CVPixelBufferLockBaseAddress(image_buffer, 0);
+    // CVPixelBufferLockBaseAddress(image_buffer, 0);
     IOSurfaceRef frame_surface = CVPixelBufferGetIOSurface(image_buffer);
-    CVPixelBufferUnlockBaseAddress(image_buffer, 0);
+    // CVPixelBufferUnlockBaseAddress(image_buffer, 0);
 
     IOSurfaceRef prev_current = NULL;
 

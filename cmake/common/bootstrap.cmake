@@ -64,7 +64,7 @@ set(dependencies_install_path "${CMAKE_SOURCE_DIR}/.deps")
 
 fetch_dependencies(${dependencies_config_path})
 
-list(APPEND CMAKE_PREFIX_PATH "${dependencies_install_path}/libobs/install_dir/Frameworks")
+# list(APPEND CMAKE_PREFIX_PATH "${dependencies_install_path}/libobs/install_dir/Frameworks")
 
 # Allow selection of common build types via UI
 if(NOT CMAKE_GENERATOR MATCHES "(Xcode|Visual Studio .+)")

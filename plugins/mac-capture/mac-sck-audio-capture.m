@@ -181,6 +181,7 @@ static void sck_audio_capture_defaults(obs_data_t *settings)
 
 static void *sck_audio_capture_create(obs_data_t *settings, obs_source_t *source)
 {
+    // return NULL;
     struct screen_capture *sc = bzalloc(sizeof(struct screen_capture));
 
     sc->source = source;

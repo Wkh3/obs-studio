@@ -22,7 +22,7 @@ void OBSVideoCapture::OnFrame(video_data *frame){
        return;
 
     rtc::scoped_refptr<webrtc::VideoFrameBuffer> buffer = nullptr;
-
+    // webrtc::r
     switch(ovi.output_format){
     case VIDEO_FORMAT_NV12: {
         auto nv12_buffer = webrtc::NV12Buffer::Create(ovi.output_width,ovi.output_height,frame->linesize[0],frame->linesize[1]);

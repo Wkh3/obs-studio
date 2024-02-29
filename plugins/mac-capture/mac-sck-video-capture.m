@@ -250,6 +250,7 @@ static bool init_screen_stream(struct screen_capture *sc)
 
 static void *sck_video_capture_create(obs_data_t *settings, obs_source_t *source)
 {
+    // return  NULL;
     struct screen_capture *sc = bzalloc(sizeof(struct screen_capture));
 
     sc->source = source;
